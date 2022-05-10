@@ -1,4 +1,5 @@
 function addTable() {
+    document.getElementById("myDynamicTable").innerHTML = "";
     var metrixSize = document.getElementById('metrixSize').value;
     var myTableDiv = document.getElementById("myDynamicTable");
     var table = document.createElement('TABLE');
@@ -10,7 +11,8 @@ function addTable() {
       var tr = document.createElement('TR');
       tableBody.appendChild(tr);
   
-      for (var j = 0; j < metrixSize; j++) {
+      for (var j = -1; j < metrixSize; j++) {
+        j = j+1
         var td = document.createElement('TD');
         td.width = '75';
         var input = document.createElement('input');
@@ -20,6 +22,7 @@ function addTable() {
         input.className = 'btn';
         td.appendChild(input);
         tr.appendChild(td);
+        j = j-1
       }
     }
     myTableDiv.appendChild(table);
@@ -31,11 +34,14 @@ function addTable() {
     const array = []
     for (let i = 0; i < metrixSize; i++) {
       const arrayI = []
-      for (let j = 0; j < metrixSize; j++) {
+      for (let j = -1; j < metrixSize; j++) {
+        j = j+1
         arrayI[j] = document.getElementById('submit'+i+j).value;
+        j = j-1
       }
       array[i] = arrayI;
     }
+    console.log(array)
     return array
 }
 
@@ -104,4 +110,4 @@ function procurarUltimo(array){
 
 var x = acharMultiplicador(m,3)
 console.log(x)
-metodo(m)
+//metodo(m)
