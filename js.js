@@ -113,7 +113,7 @@ function solveX(matrizA, matrizB){
 
 function calculateX(){
   document.getElementById("resultado").innerHTML = ''
-  document.getElementById("matrizFinal").innerHTML +=''
+  document.getElementById("matrizFinal").innerHTML =''
   var array, arrayA, arrayB = [] 
   array = stairs()
   document.getElementById("matrizFinal").innerHTML +='O matriz  final (nao formatado): ' + array
