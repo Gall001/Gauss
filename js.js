@@ -49,25 +49,23 @@ function addTable() {
 
 function stairs(){
   var array = makeMetrix()
-  const stairs = []
   const zerado = [];
   var stairSize= array.length
-  console.log('inicio das escadas, tamanho: '+array.length)
-  for (let i = 0; i < stairSize; i++) {
-    for (let j = 0; j < i; j++) {
-      console.log(array[i][j])
-      console.log("Antes array[i][j] "+array[i][j]+" array[i-1][j] "+array[i-1][j])
-      var M = array[i][j] / array[i-j][j]
-      console.log(M + "  esse eh o M")
-      for (let x = 0; x < stairSize+1; x++) {
-        console.log('ANTES array i x: '+ array[i][x]+' array i j: '+ array[i][j]+ ' m: '+ M +' array i-1 j: '+ array[i-1][j])
-        if(array[i][x] !=0){zerado[x] = array[i][x] = array[i][x] - M * array[i-1][j]}
-        console.log('DEPOIS array i x: '+ array[i][x]+' array i j: '+ array[i][j]+ ' m: '+ M +' array i-1 j: '+ array[i-1][j])
+    for (let i = 0; i < stairSize; i++) {
+      for (let j = 0; j < i; j++) {
+        console.log(" linha",array[i][j])
+        console.log("pivo",array[j][j])
+        var M = array[i][j] / array[j][j]
+        console.log('M: '+M)
+        for (let x = 0; x < stairSize+1; x++) {
+          console.log('verificando se for zero: '+zerado[x])
+          if(zerado[x] != 0){
+            zerado[x] = array[i][x] = array[i][x] - M * array[i-1][j]
+          }else{zerado[x] = array[i][x] =0}
+        }
       }
-      console.log(zerado);
     }
-  }
-
+  console.log("matriz final2 "+ array)
 }
 
 /*
