@@ -133,3 +133,46 @@ Array B = no sistema acima o array B é:
 // var x = acharMultiplicador(m,3)
 // //console.log(x)
 // //metodo(m)
+
+/* 
+RESOLVENDO as equações da matriz
+*/
+
+const m = [ [3, 1, 5, 35,    5],   
+            [0, 2, 5, 12,   66],
+            [5, 5, 1, 8,    18],
+            [8, 6, 2, 5,    34]   ];
+
+
+/* 
+Separando a matriz B da matriz completa e retornando a matriz B
+*/
+function separarB(matriz){
+  var matrixB = [];
+  for (let i = 0; i < matriz.length; i++) {
+    matrixB[i] = matriz[i][matriz.length]
+  }
+  return matrixB
+}
+
+
+/* 
+Separando a matriz A da matriz completa e retornando a matriz A
+*/
+function separarA(matriz){
+  var matrixA = new Array(matriz.length)
+  for (let i = 0; i < matriz.length; i++){
+      matriz[i].pop()
+  }
+  return matriz
+}
+
+/* 
+Resolvendo as equações com as matrizes separadas
+*/
+function solveX(matrizA, matrizB){
+  var matriX = []
+  for (let i = 0; i < matriz.length; i++) {
+    matriX[i] = matriz[i]
+  }
+}
