@@ -58,15 +58,17 @@ function stairs(){
         var M = array[i][j] / array[j][j]
         console.log('M: '+M)
         for (let x = 0; x < stairSize+1; x++) {
-          console.log('verificando se for zero: '+zerado[x])
+          console.log('verificando se for zero: '+array[i][x])
           if(zerado[x] != 0){
             zerado[x] = array[i][x] = array[i][x] - M * array[i-1][j]
           }else{zerado[x] = array[i][x] =0}
         }
+        console.log('array depois de mutiplicar: '+ array)
       }
     }
   console.log("matriz final2 "+ array)
-  return zerado
+
+  return array
 }
 
 
@@ -76,6 +78,7 @@ Separando a matriz B da matriz completa e retornando a matriz B
 */
 function spliceB(matriz){
   var matrixB = [];
+  console.log('matriz: '+matriz)
   for (let i = 0; i < matriz.length; i++) {
     matrixB[i] = matriz[i][matriz.length]
   }
@@ -105,80 +108,20 @@ function solveX(matrizA, matrizB){
     }
     matriX[i]=matriX[i]/matrizA[i][i]
   }
-  console.log(matriX)
+  return matriX
 }
 
 function calculateX(){
+  document.getElementById("resultado").innerHTML = ''
+  document.getElementById("matrizFinal").innerHTML +=''
   var array, arrayA, arrayB = [] 
   array = stairs()
+  document.getElementById("matrizFinal").innerHTML +='O matriz  final (nao formatado): ' + array
   arrayB = spliceB(array)
   arrayA = spliceA(array)
-  solveX(arrayA, arrayB)
+  matriX = solveX(arrayA, arrayB)
+  console.log(matriX)
+  for (let i = 0; i < matriX.length; i++) {
+  document.getElementById("resultado").innerHTML +=' Valor do X'+(i+1)+' = '+matriX[i]
+  }
 }
-// solveX(matrizA, matrizB)
-
-/*
-1 2 3   4
-4 5 6   7
-7 8 9   6
-Array A = no sistema acima o array a é :
-    1 2 3  
-    4 5 6
-    7 8 9
-
-Array B = no sistema acima o array B é:
-
-    4
-    7
-    6
-*/
-// const m = [ [3, 1, 5, 35,    5],   
-//             [0, 2, 5, 12,   66],
-//             [5, 5, 1, 8,    18],
-//             [8, 6, 2, 5,    34]   ];
-
-
-
-// // Formula
-// function formula(multiplicador, x, pivo) {
-//     this.x = x - (multiplicador * pivo)
-//     return this.x
-// }
-// // Metodo que procura o pivo na coluna especificada, tendo como parametro o array completo e o x
-// // e retorna o multiplicador
-// function acharMultiplicador(array, coluna, x){
-//     var multiplicador
-//     for(let i = 0; i < array.length; i++) {
-//         for (let j = coluna; j < array[i].length;){
-//             if (array[i][j]!= 0) {
-//                 multiplicador = array[i][j]
-//                 return multiplicador
-//                 break
-//             }else{
-//                 break
-//             }
-//         }
-//         if (multiplicador) {
-//             break
-//         }
-//     }
-// }
-
-// function procurarUltimo(array){
-//     for (let i = array.length-1; i > 0; i--){
-//         for (let j = 0; j < array.length; j++) {
-//            if (array[i][j] != 0) {
-//                console.log(array[i][j])
-//                break
-//            }else{
-//                break
-//            }
-            
-//         }
-//     }
-// }
-
-
-// var x = acharMultiplicador(m,3)
-// //console.log(x)
-// //metodo(m)
