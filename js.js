@@ -49,25 +49,23 @@ function addTable() {
 
 function stairs(){
   var array = makeMetrix()
-  const zerado = [];
+
   var stairSize= array.length
     for (let i = 0; i < stairSize; i++) {
       for (let j = 0; j < i; j++) {
-        console.log(" linha",array[i][j])
-        console.log("pivo",array[j][j])
         var M = array[i][j] / array[j][j]
         console.log('M: '+M)
         for (let x = 0; x < stairSize+1; x++) {
-          console.log('verificando se for zero: '+array[i][x])
-          if(zerado[x] != 0){
-            zerado[x] = array[i][x] = array[i][x] - M * array[i-1][j]
-          }else{zerado[x] = array[i][x] =0}
+          console.log('i - '+i+', j - '+j+', x - '+x)
+          console.log('before: '+array[i][x])
+          console.log('array[i-1][j]: '+array[i-1][j])
+          if(array[i][x] != 0){
+            array[i][x] = array[i][x] - M * array[i-1][j]
+          }else{array[i][x] =0}
+          console.log('after: '+array[i][x])
         }
-        console.log('array depois de mutiplicar: '+ array)
       }
     }
-  console.log("matriz final2 "+ array)
-
   return array
 }
 
@@ -124,4 +122,10 @@ function calculateX(){
   for (let i = 0; i < matriX.length; i++) {
   document.getElementById("resultado").innerHTML +=' Valor do X'+(i+1)+' = '+matriX[i]
   }
+}
+
+function calculateP(){
+  var array = makeMetrix()
+  document.getElementById("resultado").innerHTML = ''
+  document.getElementById("resultado").innerHTML += array
 }
