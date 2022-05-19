@@ -31,3 +31,9 @@ resolver vetores de tras para frente
 
     x1 = (2 + 8 = 6) -> x1 = (2 = 6-8) -> x1 = (2 = -2) x1 = -2/2, x1 = -1   
 )
+
+
+quando criar novo pivo, passa pelo o matriz procurando 0 caso achar procura linha embaixo com numero difernte de zero e troca os dois vetores,
+
+
+criar matriz identidade q troca junto com o array normal 
