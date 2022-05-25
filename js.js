@@ -41,8 +41,8 @@ function addTable() {
       }
       array[i] = arrayII;
     }
-    console.log(array)
-    console.log('nao chegamos nas escadas ainda')
+    //console.log(array)
+    //console.log('nao chegamos nas escadas ainda')
     return array
 }
 
@@ -51,22 +51,29 @@ function stairs() {
   document.getElementById("L").innerHTML = ''
   var array = makeMetrix()
   var arrayI= new Array(stairSize);
+  var arrayIII= new Array(stairSize);
   var stairSize = array.length
   var contador = 0
 
   //MATRIZ IDENTIDADE
   for (let x1 = 0; x1 < stairSize; x1++) {
     arrayI[x1]= new Array(stairSize)
+    arrayIII[x1]= new Array(stairSize)
     for (let x2 = 0; x2 < stairSize; x2++) {
       if(x1 == x2){
         arrayI[x1][x2] = 1
+        arrayIII[x1][x2] = 1
       }else{
         arrayI[x1][x2] = 0
+        arrayIII[x1][x2] = 0
       }
     }
   }
 
-  var arrayL = arrayI
+  console.log(arrayI)
+  var arrayL = arrayIII
+  console.log(arrayI)
+
 
   //ORGANIZANDO MATRIZ
   for (let multi = 0; multi < stairSize-1; multi++) {
@@ -77,7 +84,7 @@ function stairs() {
             if(array[z][y] != 0){
               //console.log('x, y, z = '+x+', '+y+', '+z)
               //console.log('array[x][y] = '+array[x][y]+' and array[z][y] is ='+array[z][y])
-              console.log('matriz atual: '+array)
+              //console.log('matriz atual: '+array)
               //array = [array[x], array[z] = array[z], array[x]]
               var holder = array[x]
               array[x] = array[z]
@@ -85,7 +92,7 @@ function stairs() {
               var holderID = arrayI[x]
               arrayI[x] = arrayI[z]
               arrayI[z] = holderID
-              console.log('matriz novo: '+array)
+              //console.log('matriz novo: '+array)
             }
           }
         }
@@ -94,31 +101,31 @@ function stairs() {
     var pivo = array[multi][multi]
 
       //CRIANDO MATRIZ L
-      console.log('AQUI ESTA O ARRAY U: '+ array)
+      //console.log('AQUI ESTA O ARRAY U: '+ array)
       contador++
-      console.log(contador+' '+stairSize)
+      //console.log(contador+' '+stairSize)
       for (let L = contador-1; L < stairSize-1; L++) {
-        console.log(array[L+1][contador-1])
+        //console.log(array[L+1][contador-1])
         arrayL[L+1][contador-1] = array[L+1][contador-1]/array[contador-1][contador-1];
       }
-      console.log('AQUI ESTA O ARRAY L: '+ arrayL)
+      //console.log('AQUI ESTA O ARRAY L: '+ arrayL)
     
-      console.log('-------------------------')
+      //console.log('-------------------------')
       //ZERANDO ELEMENTOS
       for (let i = 1 +multi; i < stairSize; i++) {
           var M = array[i][multi]/pivo   
-          console.log('array[i][multi]: '+array[i][multi]+' pivo: '+pivo)      
+          //console.log('array[i][multi]: '+array[i][multi]+' pivo: '+pivo)      
           for (let j = 0; j < stairSize+1; j++) {
-              console.log('valors i/j/multi: '+i+', '+j+', '+multi)
-              console.log('array[i][j]: '+ array[i][j] +' - M: '+ M + ' * array[multi][j]: '+array[multi][j])
+              //console.log('valors i/j/multi: '+i+', '+j+', '+multi)
+              //console.log('array[i][j]: '+ array[i][j] +' - M: '+ M + ' * array[multi][j]: '+array[multi][j])
               array[i][j] = (array[i][j] - M * array[multi][j]).toFixed(3)
-              console.log('valor novo no array: '+ array[i][j])
+              //console.log('valor novo no array: '+ array[i][j])
           }
-          console.log('+++++++++++++++') 
+          //console.log('+++++++++++++++') 
       }
   }
-  console.log('ARRAY FINALIZADO: '+array)
-  console.log('ARRAY IDENTIDADTE: '+arrayI)
+  //console.log('ARRAY FINALIZADO: '+array)
+  //console.log('ARRAY IDENTIDADTE: '+arrayI)
   document.getElementById("L").innerHTML += 'O matriz  L (nao formatado): ' + arrayL
   document.getElementById("identidade").innerHTML += 'O matriz  identidade (depois de permutacao): ' + arrayI
   return array
@@ -131,7 +138,7 @@ Separando a matriz B da matriz completa e retornando a matriz B
 */
 function spliceB(matriz){
   var matrixB = [];
-  console.log('matriz: '+matriz)
+  //console.log('matriz: '+matriz)
   for (let i = 0; i < matriz.length; i++) {
     matrixB[i] = matriz[i][matriz.length]
   }
@@ -173,7 +180,7 @@ function calculateX(){
   arrayB = spliceB(array)
   arrayA = spliceA(array)
   matriX = solveX(arrayA, arrayB)
-  console.log(matriX)
+  //console.log(matriX)
   for (let i = 0; i < matriX.length; i++) {
   document.getElementById("resultado").innerHTML +=' Valor do X'+(i+1)+' = '+matriX[i]
   }
