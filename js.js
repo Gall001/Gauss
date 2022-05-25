@@ -33,13 +33,13 @@ function addTable() {
     var metrixSize = document.getElementById('metrixSize').value;
     const array = []
     for (let i = 0; i < metrixSize; i++) {
-      const arrayI = []
+      const arrayII = []
       for (let j = -1; j < metrixSize; j++) {
         j = j+1
-        arrayI[j] = document.getElementById('submit'+i+j).value;
+        arrayII[j] = document.getElementById('submit'+i+j).value;
         j = j-1
       }
-      array[i] = arrayI;
+      array[i] = arrayII;
     }
     console.log(array)
     console.log('nao chegamos nas escadas ainda')
@@ -48,6 +48,7 @@ function addTable() {
 
 function stairs() {
   document.getElementById("identidade").innerHTML = ''
+  document.getElementById("L").innerHTML = ''
   var array = makeMetrix()
   var arrayI= new Array(stairSize);
   var stairSize = array.length
