@@ -51,6 +51,7 @@ function stairs() {
   var array = makeMetrix()
   var arrayI= new Array(stairSize);
   var stairSize = array.length
+  var contador = 0
 
   //MATRIZ IDENTIDADE
   for (let x1 = 0; x1 < stairSize; x1++) {
@@ -63,6 +64,8 @@ function stairs() {
       }
     }
   }
+
+  var arrayL = arrayI
 
   //ORGANIZANDO MATRIZ
   for (let multi = 0; multi < stairSize-1; multi++) {
@@ -88,6 +91,17 @@ function stairs() {
       }
     }
     var pivo = array[multi][multi]
+
+      //CRIANDO MATRIZ L
+      console.log('AQUI ESTA O ARRAY U: '+ array)
+      contador++
+      console.log(contador+' '+stairSize)
+      for (let L = contador-1; L < stairSize-1; L++) {
+        console.log(array[L+1][contador-1])
+        arrayL[L+1][contador-1] = array[L+1][contador-1]/array[contador-1][contador-1];
+      }
+      console.log('AQUI ESTA O ARRAY L: '+ arrayL)
+    
       console.log('-------------------------')
       //ZERANDO ELEMENTOS
       for (let i = 1 +multi; i < stairSize; i++) {
@@ -104,6 +118,7 @@ function stairs() {
   }
   console.log('ARRAY FINALIZADO: '+array)
   console.log('ARRAY IDENTIDADTE: '+arrayI)
+  document.getElementById("L").innerHTML += 'O matriz  L (nao formatado): ' + arrayL
   document.getElementById("identidade").innerHTML += 'O matriz  identidade (depois de permutacao): ' + arrayI
   return array
 }
