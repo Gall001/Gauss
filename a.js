@@ -1,7 +1,11 @@
 function Astairs() {
-    var array = [[3,3,1,7],[2,2,-1,3],[1,-1,5,5]]
+    var array = [[3,3,1,7],
+                [2,2,-1,3],
+                [1,-1,5,5]]
     var arrayI= new Array(stairSize);
     var stairSize = array.length
+    var arrayL = array
+    var contador = 0
 
     //MATRIZ IDENTIDADE
     for (let x1 = 0; x1 < stairSize; x1++) {
@@ -39,6 +43,13 @@ function Astairs() {
         }
       }
       var pivo = array[multi][multi]
+
+        //CRIANDO MATRIZ L
+        console.log('AQUI ESTA O ARRAY L: '+ arrayI)
+        contador++
+        for (let L = 0; L < stairSize-contador; L++) {
+          console.log(array[L+1][contador-1])
+        }
 
         console.log('-------------------------')
         //ZERANDO ELEMENTOS

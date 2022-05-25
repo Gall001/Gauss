@@ -153,7 +153,7 @@ function calculateX(){
   document.getElementById("matrizFinal").innerHTML =''
   var array, arrayA, arrayB = [] 
   array = stairs()
-  document.getElementById("matrizFinal").innerHTML +='O matriz  final (nao formatado): ' + array
+  document.getElementById("matrizFinal").innerHTML +='Matriz U (nao formatado): ' + array
   arrayB = spliceB(array)
   arrayA = spliceA(array)
   matriX = solveX(arrayA, arrayB)
