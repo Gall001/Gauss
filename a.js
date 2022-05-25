@@ -47,7 +47,7 @@ function Astairs() {
         //CRIANDO MATRIZ L
         console.log('AQUI ESTA O ARRAY L: '+ arrayI)
         contador++
-        for (let L = 0; L < stairSize-contador; L++) {
+        for (let L = contador-1; L < stairSize-contador; L++) {
           console.log(array[L+1][contador-1])
         }
 
