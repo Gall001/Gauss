@@ -111,8 +111,8 @@ function saidel(){
   var contador = 0
   console.log('tableChutes: '+tableChutes)
   console.log('stopping: '+parada)
-  while (contador < 10) {
-    contador ++
+  while (contador < array.length) {
+    contador = 0
     for (let i = 0; i < array.length; i++) {
       tableChutesAnt[i] = tableChutes[i]
     }
@@ -130,9 +130,18 @@ function saidel(){
       tableChutes[i] = equacao.toFixed(10)
       //console.log('equacao: '+equacao+', tableChutes[i]: '+tableChutes[i])
     }
+    for (let i = 0; i < array.length; i++) {
+      result = Math.abs(tableChutesAnt[i]) - Math.abs(tableChutes[i])
+      if(Math.abs(result) < parada){
+        contador ++
+      }
+    }
     console.log('tableChutes Ant 1:'+tableChutesAnt)
     console.log('tableChutes atual:'+tableChutes)
-  }console.log('Final result:'+tableChutes)
+  }
+  console.log('Final result:'+tableChutes)
+  document.getElementById("saidelResultado").innerHTML = ''
+  document.getElementById("saidelResultado").innerHTML += 'Array De saidell Finalizado: ' + tableChutes
 }
 
 //GAUSS
