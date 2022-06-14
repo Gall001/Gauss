@@ -13,14 +13,17 @@
         <div>Matrix size</div>
         <input type="number" id="metrixSize">
         <button class="button" onclick="addTable()">Create</button>
+        <div>Critérios de convergência</div>
+        <input type="number" id="criterio">
     </div>
     <form id="form">
         <div id="container">
             <div id="myDynamicTable"></div>
+            <div id="tableChutes"></div>
         </div>
         <br>
         <input onclick="calculateX()" id="metrix" type="button"  value="resolve"> 
-        <input onclick="calculateP()" id="permutacao" type="button"  value="permutacao"> 
+        <input onclick="validateSaidel()" id="saidel" type="button"  value="Saidel"> 
     </form>
 
     <div>

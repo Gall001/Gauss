@@ -1,7 +1,9 @@
 function addTable() {
     document.getElementById("myDynamicTable").innerHTML = "";
+    document.getElementById("tableChutes").innerHTML = "";
     var metrixSize = document.getElementById('metrixSize').value;
     var myTableDiv = document.getElementById("myDynamicTable");
+    var chuteDiv = document.getElementById("tableChutes");
     var table = document.createElement('TABLE');
     table.border = '1';
     var tableBody = document.createElement('TBODY');
@@ -25,7 +27,31 @@ function addTable() {
         j = j-1
       }
     }
+    var table1 = document.createElement('TABLE');
+    table1.border = '1';
+    var tableBody = document.createElement('TBODY');
+    table1.appendChild(tableBody);
+  
+    for (var i = 0; i < metrixSize; i++) {
+      var tr = document.createElement('TR');
+      tableBody.appendChild(tr);
+  
+      for (var j = -1; j < 0; j++) {
+        j = j+1
+        var td = document.createElement('TD');
+        td.width = '75';
+        var input = document.createElement('input');
+        input.type = 'number';
+        input.id = 'chute'+i+j;
+        input.value = 'chute'+i+j;
+        input.className = 'btn';
+        td.appendChild(input);
+        tr.appendChild(td);
+        j = j-1
+      }
+    }
     myTableDiv.appendChild(table);
+    chuteDiv.appendChild(table1);
     return metrixSize
   }
 
@@ -46,6 +72,70 @@ function addTable() {
     return array
 }
 
+function makeMetrixChute(){
+  var metrixSize = document.getElementById('metrixSize').value;
+  const array = []
+  for (let i = 0; i < metrixSize; i++) {
+    array[i] = document.getElementById('chute'+i+0).value;;
+  }
+  //console.log(array)
+  //console.log('nao chegamos nas escadas ainda')
+  return array
+}
+
+
+//SAIDEL
+ function validateSaidel(){
+  var array = makeMetrix()
+  var arraySize = document.getElementById('metrixSize').value;
+  for (let i = 0; i < array.length; i++) {
+    var atual = array[i][i]
+    var soma = 0
+    for (let j = 0; j < arraySize; j++) {
+      if(j != i){
+        soma += parseInt(array[i][j])
+      }
+    }
+    if(soma/atual >= 1){
+      throw new Error("Your array is wrong!");
+    }
+  }
+  saidel()
+ }
+
+function saidel(){
+  var array = makeMetrix()
+  var tableChutes = makeMetrixChute()
+  var tableChutesAnt = makeMetrixChute()
+  var parada = document.getElementById('criterio').value;
+  var contador = 0
+  console.log('tableChutes: '+tableChutes)
+  console.log('stopping: '+parada)
+  while (contador < 10) {
+    contador ++
+    for (let i = 0; i < array.length; i++) {
+      tableChutesAnt[i] = tableChutes[i]
+    }
+    for (let i = 0; i < array.length; i++) {
+      var equacao = 0
+      for (let j = 0; j < array.length+1; j++) {
+        if(i == j){
+          }else if(j == array.length){
+              equacao += parseInt(array[i][j])
+            }else{
+                equacao += (parseInt(array[i][j])*parseInt(tableChutes[j])) * -1 
+              }
+      }
+      equacao = equacao/array[i][i]
+      tableChutes[i] = equacao.toFixed(10)
+      //console.log('equacao: '+equacao+', tableChutes[i]: '+tableChutes[i])
+    }
+    console.log('tableChutes Ant 1:'+tableChutesAnt)
+    console.log('tableChutes atual:'+tableChutes)
+  }console.log('Final result:'+tableChutes)
+}
+
+//GAUSS
 function stairs() {
   document.getElementById("identidade").innerHTML = ''
   document.getElementById("L").innerHTML = ''
@@ -184,10 +274,4 @@ function calculateX(){
   for (let i = 0; i < matriX.length; i++) {
   document.getElementById("resultado").innerHTML +=' Valor do X'+(i+1)+' = '+matriX[i]
   }
-}
-
-function calculateP(){
-  var array = makeMetrix()
-  document.getElementById("resultado").innerHTML = ''
-  document.getElementById("resultado").innerHTML += array
 }
